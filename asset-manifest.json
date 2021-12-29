@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/decentralised-expense-tracker/static/css/main.e0a9d0aa.chunk.css",
-    "main.js": "/decentralised-expense-tracker/static/js/main.40985450.chunk.js",
-    "main.js.map": "/decentralised-expense-tracker/static/js/main.40985450.chunk.js.map",
+    "main.js": "/decentralised-expense-tracker/static/js/main.5903e4cb.chunk.js",
+    "main.js.map": "/decentralised-expense-tracker/static/js/main.5903e4cb.chunk.js.map",
     "runtime-main.js": "/decentralised-expense-tracker/static/js/runtime-main.5b1a8dc1.js",
     "runtime-main.js.map": "/decentralised-expense-tracker/static/js/runtime-main.5b1a8dc1.js.map",
-    "static/js/2.f3ea816e.chunk.js": "/decentralised-expense-tracker/static/js/2.f3ea816e.chunk.js",
-    "static/js/2.f3ea816e.chunk.js.map": "/decentralised-expense-tracker/static/js/2.f3ea816e.chunk.js.map",
+    "static/js/2.d3358fed.chunk.js": "/decentralised-expense-tracker/static/js/2.d3358fed.chunk.js",
+    "static/js/2.d3358fed.chunk.js.map": "/decentralised-expense-tracker/static/js/2.d3358fed.chunk.js.map",
     "index.html": "/decentralised-expense-tracker/index.html",
     "static/css/main.e0a9d0aa.chunk.css.map": "/decentralised-expense-tracker/static/css/main.e0a9d0aa.chunk.css.map",
-    "static/js/2.f3ea816e.chunk.js.LICENSE.txt": "/decentralised-expense-tracker/static/js/2.f3ea816e.chunk.js.LICENSE.txt"
+    "static/js/2.d3358fed.chunk.js.LICENSE.txt": "/decentralised-expense-tracker/static/js/2.d3358fed.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.5b1a8dc1.js",
-    "static/js/2.f3ea816e.chunk.js",
+    "static/js/2.d3358fed.chunk.js",
     "static/css/main.e0a9d0aa.chunk.css",
-    "static/js/main.40985450.chunk.js"
+    "static/js/main.5903e4cb.chunk.js"
   ]
 }
