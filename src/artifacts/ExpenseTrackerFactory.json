@@ -18,7 +18,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -38,7 +39,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"createExpenseTracker\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getExpenseTracker\",\"outputs\":[{\"internalType\":\"contract ExpenseTracker\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"userToContract\",\"outputs\":[{\"internalType\":\"contract ExpenseTracker\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/ExpenseTracker.sol\":\"ExpenseTrackerFactory\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/ExpenseTracker.sol\":{\"keccak256\":\"0x3c3dda4af1f2f9f912c241167b5d102992440197cd8f8883de760717a88261ee\",\"urls\":[\"bzz-raw://6c4ebe6052ee0f19b69acea277491042bfc903327f8fba7af218b2405595681b\",\"dweb:/ipfs/QmT25dqZjfv92HsmMSW7eKFtKo6Z89RZu1N1M9PYsRzEEB\"]}},\"version\":1}",
@@ -1155,7 +1157,7 @@
   "sourceMap": "48:414:0:-:0;;;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "48:414:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;153:180;;;:::i;:::-;;341:118;;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;88:56;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;153:180;203:32;257:10;238:30;;;;;:::i;:::-;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;203:65;;308:17;279:14;:26;294:10;279:26;;;;;;;;;;;;;;;;:46;;;;;;;;;;;;;;;;;;153:180;:::o;341:118::-;391:14;425;:26;440:10;425:26;;;;;;;;;;;;;;;;;;;;;;;;;418:33;;341:118;:::o;88:56::-;;;;;;;;;;;;;;;;;;;;;;:::o;-1:-1:-1:-;;;;;;;;:::o;7:139:2:-;;91:6;78:20;69:29;;107:33;134:5;107:33;:::i;:::-;59:87;;;;:::o;152:262::-;;260:2;248:9;239:7;235:23;231:32;228:2;;;276:1;273;266:12;228:2;319:1;344:53;389:7;380:6;369:9;365:22;344:53;:::i;:::-;334:63;;290:117;218:196;;;;:::o;420:147::-;515:45;554:5;515:45;:::i;:::-;510:3;503:58;493:74;;:::o;573:175::-;682:59;735:5;682:59;:::i;:::-;677:3;670:72;660:88;;:::o;754:238::-;;893:2;882:9;878:18;870:26;;906:79;982:1;971:9;967:17;958:6;906:79;:::i;:::-;860:132;;;;:::o;998:266::-;;1151:2;1140:9;1136:18;1128:26;;1164:93;1254:1;1243:9;1239:17;1230:6;1164:93;:::i;:::-;1118:146;;;;:::o;1270:96::-;;1336:24;1354:5;1336:24;:::i;:::-;1325:35;;1315:51;;;:::o;1372:126::-;;1449:42;1442:5;1438:54;1427:65;;1417:81;;;:::o;1504:134::-;;1595:37;1626:5;1595:37;:::i;:::-;1582:50;;1572:66;;;:::o;1644:170::-;;1749:59;1802:5;1749:59;:::i;:::-;1736:72;;1726:88;;;:::o;1820:135::-;;1925:24;1943:5;1925:24;:::i;:::-;1912:37;;1902:53;;;:::o;1961:126::-;;2044:37;2075:5;2044:37;:::i;:::-;2031:50;;2021:66;;;:::o;2093:113::-;;2176:24;2194:5;2176:24;:::i;:::-;2163:37;;2153:53;;;:::o;2212:122::-;2285:24;2303:5;2285:24;:::i;:::-;2278:5;2275:35;2265:2;;2324:1;2321;2314:12;2265:2;2255:79;:::o",
   "source": "pragma solidity ^0.7.6;\r\npragma abicoder v2;\r\n\r\ncontract ExpenseTrackerFactory {\r\n\r\n    mapping(address => ExpenseTracker) public userToContract;\r\n\r\n    function createExpenseTracker() public {\r\n        ExpenseTracker newExpenseTracker = new ExpenseTracker(msg.sender);\r\n        userToContract[msg.sender] = newExpenseTracker;\r\n    }\r\n\r\n    function getExpenseTracker() public view returns (ExpenseTracker) {\r\n        return userToContract[msg.sender];\r\n    }\r\n}\r\n\r\ncontract ExpenseTracker {\r\n\r\n    struct TransactionEntry {\r\n        string description;\r\n        int value;\r\n    }\r\n\r\n    TransactionEntry[] private entries;\r\n    address public user;\r\n    int private income;\r\n    int private expense;\r\n\r\n    modifier onlyUser() {\r\n        require(msg.sender == user);\r\n        _;\r\n    }\r\n\r\n    constructor(address _user) {\r\n        user = _user;\r\n    }\r\n\r\n    function addTransaction(string memory description, int value) public onlyUser {\r\n        TransactionEntry memory newTransactionEntry = TransactionEntry({\r\n            description: description,\r\n            value: value\r\n        });\r\n        entries.push(newTransactionEntry);\r\n\r\n        if(value >= 0){\r\n            income += value;\r\n        }\r\n        else{\r\n            expense -= value;\r\n        }\r\n    }\r\n\r\n    function getTransactions() public view onlyUser returns (TransactionEntry[] memory) {\r\n        return entries;\r\n    }\r\n\r\n    function getIncome() public view onlyUser returns (int) {\r\n        return income;\r\n    }\r\n\r\n    function getExpense() public view onlyUser returns (int) { \r\n        return expense;\r\n    }\r\n\r\n}",
-  "sourcePath": "D:\\Files\\Blockchain\\Truffle-React-adriandelgg\\Truffle-React-Redux-Boilerplate-main\\contracts\\ExpenseTracker.sol",
+  "sourcePath": "D:\\Files\\Blockchain\\Expense-Tracker-Truffle-React\\decentralised-expense-tracker\\contracts\\ExpenseTracker.sol",
   "ast": {
     "absolutePath": "project:/contracts/ExpenseTracker.sol",
     "exportedSymbols": {
@@ -4542,9 +4544,17 @@
     "name": "solc",
     "version": "0.7.6+commit.7338295f.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "4": {
+      "events": {},
+      "links": {},
+      "address": "0x34e067cB80d9c217681C426cFa42E088F1b91225",
+      "transactionHash": "0xd3626024d592f1cb8b488f81306b33488438ee60534cb9e5528f5c04e6547649"
+    }
+  },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-12-28T10:40:49.387Z",
+  "updatedAt": "2021-12-29T11:29:37.763Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},
