@@ -4,10 +4,10 @@ import ExpenseTrackerFactory from '../artifacts/ExpenseTrackerFactory.json';
 const getFactory = async () => {
 
     // rinkeby
-    const address = "0xAec05e62F6DD9218924911332053c1045D941fbD";
+    // const address = "0xAec05e62F6DD9218924911332053c1045D941fbD";
 
     // ganache
-    //const address = "0xA497AFea517dEeaa2a205af5B86989F4830aA87E";
+    const address = "0xA497AFea517dEeaa2a205af5B86989F4830aA87E";
     let instance;
 
     try {

@@ -7,6 +7,8 @@ import Login from './routes/login';
 import Add from './routes/add';
 import View from './routes/view';
 
+import './styles/logout.css';
+
 export const AppContext = React.createContext();
 
 const App = (props) => {
@@ -32,19 +34,29 @@ const App = (props) => {
 	return (
 		<>		
 
-			{account ? 
+			{/* {account ? 
 				<button
 					type='submit'
+					style={{marginRight:'200px'}}
 					onClick={onLogoutButtonHandler} 
 					id='logoutButton' 
 					className='logoutButton'>
 						Logout
 				</button> :
 				<></>
-			}
+			} */}
 
 				<AppContext.Provider value={context_value}>
-
+					{account ? 
+						<button
+							type='submit'
+							onClick={onLogoutButtonHandler} 
+							id='logoutButton' 
+							className='logoutButton'>
+								Logout
+						</button> :
+						<></>
+					}
 					{!account ?
 						<Login /> :
 						!viewComp ?

@@ -1,0 +1,45 @@
+.flex-container-add {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid black;
+    border-radius: 25px;
+    margin: auto;
+    margin-top: 200px;
+    width : 400px;
+    background-color: #D34F73FF;
+    color: #DBBEA1FF;
+}
+
+h3 {
+    margin-top: 20px; 
+}
+
+.flex-container-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 250px;
+}
+
+.input-box {
+    margin-bottom: 5px;
+    float:right;
+}
+
+#submitButton {
+    margin-bottom: 20px;
+    margin-top: 10px;
+    padding: 3px;
+    background-color: #3E282BFF;
+    color: #A37B73FF;
+    align-self: center;
+}
+
+#viewButton {
+    margin-top: 10px;
+    padding: 3px;
+    background-color: #3E282BFF;
+    color: #A37B73FF;
+}

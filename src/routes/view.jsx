@@ -5,6 +5,7 @@ import getFactory from '../ethereum/factory';
 import { AppContext } from '../App';
 import { useEffect } from 'react';
 
+import '../styles/view.css';
 
 const View = () => {
 
@@ -75,27 +76,32 @@ const View = () => {
     };
 
     return <> 
-        {income && <h3>Income: {income}</h3>}
-        {expense && <h3>Expense: {expense}</h3>}
-        {balance && <h3>Balance: {balance}</h3>}
+        <br/>
+        <button type='submit' onClick={onAddButtonHandler} id='addButton'>Add Transactions</button>
+
+        {income && expense && balance && 
+            <div className='flex-container-view'>
+                <h3 className='flexbox-item-view'>Income: {income}</h3>
+                <h3 className='flexbox-item-view'>Expense: {expense}</h3>
+                <h3 className='flexbox-item-view'>Balance: {balance}</h3>
+            </div>
+        }
         {!transactions ? 
             <main style={{ padding: "1rem" }}>
 			<h1>Getting transactions ... </h1>
-			</main> :
-
-            <ul>
+			</main> :                
+            <div className='grid-container-view'>
             {[...transactions].reverse().map((transaction, index) => {
-                    return <li key={index}>
-                        <h5>Description: {transaction.description}, Amount: {transaction.value}</h5>
-                        <br/>
-                    </li>
+                    return <div className='grid-item-view' key={index}>
+                        <h4>{transaction.description}</h4>
+                        <h3>{transaction.value}</h3>
+                    </div>
                 }
             )
             }
-            </ul>
+            </div>
         }
         {console.log(transactions)}
-        <button type='submit' onClick={onAddButtonHandler} id='addButton'>Add Transactions</button>
     </>
 }
 

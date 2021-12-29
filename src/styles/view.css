@@ -1,0 +1,40 @@
+#addButton {
+    margin-top: 10px;
+    padding: 3px;
+    background-color: #3E282BFF;
+    color: #A37B73FF;
+}
+
+.flex-container-view {
+    margin: auto;
+    margin-top: 20px;
+    width: 601px;
+    display: flex;
+    justify-content: space-around;
+    border: 3px solid black;
+}
+
+.flexbox-item-view {
+    border: 3px solid black;
+    padding: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 200px;
+}
+
+.grid-container-view {
+    margin-top: 50px;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 250px 250px 250px;
+    grid-gap: 50px;
+}
+
+.grid-item-view {
+    border: 3px solid black;
+    border-radius: 25px;
+    background-color: #D34F73FF;
+    color: #DBBEA1FF;
+    height: 100px;
+    text-align: center;
+}

@@ -1,0 +1,28 @@
+.flex-container-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 3px solid black;
+    border-radius: 25px;
+    margin: auto;
+    margin-top: 200px;
+    width : 400px;
+    align-items: center ;
+    background-color: #D34F73FF;
+    color: #DBBEA1FF;
+    /* color: #D34F73FF;
+    background-color: #DBBEA1FF; */
+}
+
+
+
+.flexbox-item-login-1 {
+    padding-top: 20px;
+}
+
+.flexbox-item-login-2 {
+    margin-bottom: 20px;
+    padding: 5px;
+    background-color: #3E282BFF;
+    color: #A37B73FF;
+}

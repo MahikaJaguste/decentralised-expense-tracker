@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import getAccount from '../ethereum/account';
 import { AppContext } from '../App';
 
+import '../styles/login.css';
 
 const Login = () => {
     //const [isConnecting, setIsConnecting] = useState(false);
@@ -21,8 +22,10 @@ const Login = () => {
     }
 
     return <>
-        <h4>Connect to Expense Tracker with your account</h4>
-        <button type='submit' onClick={onLoginHandler} id='loginButton'>Connect</button>
+        <div className='flex-container-login'>
+            <h4 className='flexbox-item-login-1'>Connect to Expense Tracker with a MetaMask account</h4>
+            <button type='submit' onClick={onLoginHandler} id='loginButton' className='flexbox-item-login-2'>Connect</button>
+        </div>  
     </>
 }
 

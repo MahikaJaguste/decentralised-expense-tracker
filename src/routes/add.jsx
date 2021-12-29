@@ -5,6 +5,7 @@ import getTracker from '../ethereum/tracker';
 import getFactory from '../ethereum/factory';
 import { AppContext } from '../App';
 
+import '../styles/add.css';
 
 const Add = () => {
 
@@ -63,32 +64,41 @@ const Add = () => {
     };
 
     return <>
-
-            <h3>Add a transaction</h3>
-
-            <form>
-                <label htmlFor='description'>Description</label>
-                <input
-                    id='description' 
-                    name='Description' 
-                    type='text'
-                    value = {description}
-                    onChange={(event) => setDescription(event.target.value)}
-                />
-                <br/>
-                <label htmlFor='amount'>Amount</label>
-                <input
-                    id='amount' 
-                    name='Amount' 
-                    type='number'
-                    value = {amount}
-                    onChange={(event) => setAmount(event.target.value)}
-                />
-                <br/>
-                <button id='submit' onClick={onSubmit}>Add</button>
-            </form> 
             <br/>
-            <button type='submit' onClick={onViewButtonHandler} id='viewButton' className='button'>View Transactions</button>      
+            <button type='submit' onClick={onViewButtonHandler} id='viewButton' className='button'>View Transactions</button> 
+            <div className='flex-container-add'>
+                    <h3>Add a transaction</h3>
+                        
+                    <form className='flex-container-form'>
+
+                        <div>
+                            <label className='form-label' htmlFor='description'>Description</label>
+                            <input 
+                                className='input-box'
+                                id='description' 
+                                name='Description' 
+                                type='text'
+                                value = {description}
+                                onChange={(event) => setDescription(event.target.value)}
+                            />
+                        </div>
+                        
+                        <div>
+                            <label className='form-label' htmlFor='amount'>Amount</label>
+                            <input
+                                className='input-box'
+                                id='amount' 
+                                name='Amount' 
+                                type='number'
+                                value = {amount}
+                                onChange={(event) => setAmount(event.target.value)}
+                            />
+                        </div>
+                        
+                        <button className='flex-item-form' id='submitButton' onClick={onSubmit}>Add</button>
+                    </form> 
+                
+            </div>     
     </>
 }
 
